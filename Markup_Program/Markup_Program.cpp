@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cctype>
 #include <string>
 using namespace std;
 
@@ -9,9 +10,32 @@ int main()
     double wholesale = 0.0;
     double markup = 0.0;
     double retail = 0.0;
+    string input;
 
-    cout << "Enter the wholesale cost: ";
-    cin >> wholesale;
+    do
+    {
+        cout << "Enter the wholesale cost: ";
+        cin >> input;
+
+        if (!isdigit(input[0]))
+        {
+            cout << "\nPlease enter numbers and not a characters.\n\n";
+        }
+
+        else
+        {
+            wholesale = stod(input);
+        }
+
+        if (wholesale < 0.0)
+        {
+            cout << "\nPlease enter a positive number.\n\n";
+        }
+
+    } while (wholesale < 0.0 || !isdigit(input[0]));
+   
+
+
 
     cout << "\nEnter the markup percentage: ";
     cin >> markup;
